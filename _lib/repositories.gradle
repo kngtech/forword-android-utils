@@ -1,0 +1,33 @@
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    maven {
+        name "s3RepoSnapshots"
+        url "$s3repoBaseUrl/snapshots"
+        credentials(AwsCredentials) {
+            accessKey awsAccessKey
+            secretKey awsSecretKey
+        }
+    }
+    maven {
+        name "s3RepoInternal"
+        url "$s3repoBaseUrl/internal"
+        credentials(AwsCredentials) {
+            accessKey awsAccessKey
+            secretKey awsSecretKey
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        add project.version.endsWith('-SNAPSHOT') ? project.repositories.s3RepoSnapshots : project.repositories.s3RepoInternal
+    }
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="email_error">Invalid email</string>
+    <string name="pasword_error">Invalid password.</string>
+    <string name="blank_error">Field cannot be empty.</string>
+    <string name="prefs_name">PREFERENCE</string>
+    <string name="prefs_pass">password</string>
+</resources>
