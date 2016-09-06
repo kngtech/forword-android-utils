@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EmailInputLayout">
+        <!--<attr name=""></attr>-->
+    </declare-styleable>
+    <declare-styleable name="PasswordInputLayout">
+        <attr name="isConfirmPassword" format="boolean"/>
+    </declare-styleable>
+</resources>
