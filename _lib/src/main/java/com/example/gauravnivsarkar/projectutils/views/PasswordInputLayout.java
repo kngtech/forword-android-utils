@@ -5,8 +5,10 @@ import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.example.gauravnivsarkar.projectutils.R;
 import com.example.gauravnivsarkar.projectutils.Utils;
@@ -81,11 +83,19 @@ public class PasswordInputLayout extends BaseTextInputLayout {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                isValidPassword= Utils.isValidPassword(charSequence,validLength,isConfirmPassword,passwordText);
+                isValidPassword= Utils.isValidPassword(charSequence,validLength);
+                Log.d(PasswordInputLayout.class.getCanonicalName(),"isValidPassword1"+isValidPassword);
+                if(isConfirmPassword){
+                    if(!TextUtils.isEmpty(passwordText)){
+                        isValidPassword&=passwordText.toString().contentEquals(charSequence);
+                    }else{
+                        isValidPassword=false;
+                    }
+                }
                 setErrorEnabled(!isValidPassword);
-                setError(!isValidPassword?null:getContext().getString(R.string.pasword_error));
+                setError(isValidPassword?null:getContext().getString(R.string.pasword_error));
                 if(passwordState!=null)
-                passwordState.isPasswordValid(!isValidPassword,!isConfirmPassword?charSequence:null);
+                passwordState.isPasswordValid(isValidPassword,!isConfirmPassword?charSequence:null);
             }
 
             @Override

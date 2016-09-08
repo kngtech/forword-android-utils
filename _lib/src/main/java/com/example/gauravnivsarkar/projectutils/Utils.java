@@ -16,10 +16,8 @@ public class Utils {
         }
     }
 
-    public static final boolean isValidPassword(CharSequence target,int validLength,boolean isConfirm,CharSequence password){
-        if(TextUtils.isEmpty(password) && isConfirm) return false;
+    public static final boolean isValidPassword(CharSequence target, int validLength){
         boolean val= !TextUtils.isEmpty(target) && target.toString().trim().length()>=validLength;
-        if(isConfirm) val&=password.equals(target);
         return val;
     }
 
