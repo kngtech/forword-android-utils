@@ -9,6 +9,7 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        version 0.02
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -33,7 +34,6 @@ publishing {
         heady(MavenPublication) {
             groupId 'io.heady'
             artifactId 'projectutils-library'
-            version '0.01'
             artifact(sourceJar)
             artifact("$buildDir/outputs/aar/${archiveName}-${version}.aar")
             pom.withXml {
