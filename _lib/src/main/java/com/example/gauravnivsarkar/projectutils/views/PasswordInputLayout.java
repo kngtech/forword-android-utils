@@ -83,9 +83,9 @@ public class PasswordInputLayout extends BaseTextInputLayout {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 isValidPassword= Utils.isValidPassword(charSequence,validLength,isConfirmPassword,passwordText);
                 setErrorEnabled(!isValidPassword);
-                setError(isValidPassword?null:getContext().getString(R.string.pasword_error));
+                setError(!isValidPassword?null:getContext().getString(R.string.pasword_error));
                 if(passwordState!=null)
-                passwordState.isPasswordValid(isValidPassword,!isConfirmPassword?charSequence:null);
+                passwordState.isPasswordValid(!isValidPassword,!isConfirmPassword?charSequence:null);
             }
 
             @Override
