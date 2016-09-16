@@ -1,10 +1,10 @@
 package com.example.gauravnivsarkar.projectutils.activities;
 
-import android.app.Fragment;
-import android.app.LoaderManager;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -20,7 +20,7 @@ public abstract class Base_Fragment extends Fragment {
     private Toast toast;
 
     protected void initOrRestartLoader(int id, Bundle searchArgs, LoaderManager.LoaderCallbacks callback) {
-        LoaderManager manager = getLoaderManager();
+        LoaderManager manager = getActivity().getSupportLoaderManager();
         if (manager.getLoader(id) == null) {
             manager.initLoader(id, searchArgs, callback);
         } else {
