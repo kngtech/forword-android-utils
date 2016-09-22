@@ -51,7 +51,7 @@ public class NonEmptyTextInputLayout extends BaseTextInputLayout {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                isNotEmpty = Utils.isTextEmpty(charSequence);
+                isNotEmpty = !Utils.isTextEmpty(charSequence);
                 setErrorEnabled(!isNotEmpty);
                 setError(isNotEmpty?null:getContext().getString(R.string.blank_error));
                 if(stateListener!=null){
