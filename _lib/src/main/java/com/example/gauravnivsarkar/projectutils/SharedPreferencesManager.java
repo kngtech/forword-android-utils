@@ -8,9 +8,6 @@ package com.example.gauravnivsarkar.projectutils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
-import android.util.Log;
-
-import com.securepreferences.SecurePreferences;
 
 
 public final class SharedPreferencesManager {
@@ -194,13 +191,7 @@ public final class SharedPreferencesManager {
         if (sharedPreferences == null) {
             {
                 String name=context.getResources().getString(R.string.prefs_name);
-                Log.d("getSharedPreferences","isDebug?"+BuildConfig.DEBUG);
-                if(BuildConfig.DEBUG) {
-                    sharedPreferences = context.getSharedPreferences(name, Context.MODE_PRIVATE);
-                }else{
-                    String pass=context.getResources().getString(R.string.prefs_pass);
-                    sharedPreferences=new SecurePreferences(context,pass,name);
-                }
+                sharedPreferences = context.getSharedPreferences(name, Context.MODE_PRIVATE);
             }
         }
         return sharedPreferences;

@@ -93,7 +93,8 @@ public class PasswordInputLayout extends BaseTextInputLayout {
                     }
                 }
                 setErrorEnabled(!isValidPassword);
-                setError(isValidPassword?null:getContext().getString(R.string.pasword_error));
+                int errResID=isConfirmPassword?R.string.confirm_password_error:R.string.pasword_error;
+                setError(isValidPassword?null:getContext().getString(errResID));
                 if(passwordState!=null)
                 passwordState.isPasswordValid(isValidPassword,!isConfirmPassword?charSequence:null);
             }
